@@ -57,6 +57,29 @@ t2->Write();
 fout->Close();
 fin->Close();
 
+Once we have the filtered root file, we can run the missing_mass2.cpp file. convert it to an executible by: g++ missing_mass2.cpp $(root-config --cflags --libs) -o missing_mass2
+then run the code within the setup environment **./missing_mass2 <filtered root file>**
+
+Run histogram.py to plot histogram of the missing mass csv file. save the popup image if needed.
+
+Some useful Commands:
+swif2 cancel -workflow <workflow_name> -delete (cancels the jobs and deletes the workflow)
+swif2 create -workflow <name>
+swif2 status -workflow <name> (-jobs)
+
+root 
+new TBrowser (to view the gst files)
+TFile *f = TFile::Open("gntp.10000.gst.root")
+TTree *t = (TTree*)f->Get("gst")
+t->Draw("nfpi0", "(nfpip + nfpim + nfpi0)==7")
+t->Scan("nfpi0", "(nfpip + nfpim + nfpi0)==7")
+t->Show("<event number>")
+
+to copy files from ifarm to the local: scp -o ProxyCommand='ssh -W %h:%p %r@login.jlab.org.' neupane@login.jlab.org. neupane@ifarm:/work/hallc/e1206107/neupane/genie-works/missing_mass2.cpp  ./
+There is a better way to do it using Globus but I haven't checked it out. 
+
+
+
 
 P.S: Please make sure to reference the core codes properly(i.e. run_gevgen and run_gntpc are at the locations listed in the wrapper texts: submit_gevgen and submit_gntpc). Any problem in creating account, slurm, swif2 can be contacted with help desk with ease.
 
