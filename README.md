@@ -16,18 +16,24 @@ The way I used GENIE was by **setting up the below container in my IFARM account
 /cvmfs/oasis.opensciencegrid.org/mis/apptainer/current/bin/apptainer shell --shell=/bin/bash -B /cvmfs,/work/hallc/e1206107/<location of setup_GENIE.sh file> --ipc --pid /cvmfs/singularity.opensciencegrid.org/fermilab/fnal-dev-sl7:latest
 
 and** sourcing the following files in order.** 
+
 -source /cvmfs/fermilab.opensciencegrid.org/products/genie/bootstrap_genie_ups.sh
+
 -source /cvmfs/fermilab.opensciencegrid.org/products/common/etc/setups 
+
 -source setup_GENIE.sh https://github.com/e4nu/Generator-NuHepMC.git hepmc3-Q2_04 false false $GENIE/config/ true    (make sure of existence of setup_GENIE.sh in the directory of execution of the command)
 
 Your GENIE environment is now set up.
 
 
 To submit multiple jobs at IFARM, you will need wrapper codes with location of actual code to run on the farm. 
+
 The submit_geven_swif2.sh and submit_gntpc_swif2.sh are the wrapper texts to be used when creating events and converting those events in ghep format to gst format that can be easily analysed.
 
 swif2 command package is used to keep track of your jobs at ifarm. The codes provided in the repo make use of the swif2 package to submit jobs at ifarm.
+
 The code does not create a workflow. I create workflows manually using (swif2 create -workflow <workflow name>). Make sure to check the workflow name in the main code to match it.
+
 One can change the code as necessary to make it flexible.
 
 **The core operation**
