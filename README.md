@@ -31,11 +31,12 @@ The code does not create a workflow. I create workflows manually using (swif2 cr
 One can change the code as necessary to make it flexible.
 
 **The core operation**
+
 **create splines using the following command:**    gmkspl -p 11 -t 1000010020     -e 4.021     -o e4021_deu.xml   --tune GEM21_11a_00_000 --event-generator-list EMDIS
                                                           (probe)   (target) (energy/range)  (spline file output, user defined name)
 
 **Generate events using the splines**:    gevgen -n 1000000 -p 11 -t 1000060120 -e 4021 --tune GEM21_11a_00_000 --event-generator-list EMDIS --cross-sections e4012_c12.xml -o gntp.1001.ghep.root
-(on ifarm, type **bash submit_gevgen_swif2.sh**)                                                                                          (reference the xml file, using proper location if different from the current location)
+(on ifarm, setup the environment, type **bash submit_gevgen_swif2.sh**)                                                 (reference the xml file, using proper location if different from the current location)
 
 **convert to gst format**: gntpc -f gst -i gntp.1.ghep.root -o gntp.1.gst.root
 (in the Generator folder, the splines along with .status files are stored. remove the .status files and run **bash submit_gntpc_swif2.sh**)
@@ -46,8 +47,8 @@ hadd [output_file_name] [input_files]
 **run root**: root
 
 (I was having some difficulty writing the code. I do the following task manually:)
-**put filters:**
 
+**put filters:**
 TFile *fin = new TFile("<combined large gst file>");
 TTree *t = (TTree*)fin->Get("gst");
 TFile *fout = new TFile("<filtered file name, user defined>", "RECREATE");
@@ -55,6 +56,9 @@ TTree *t2 = t->CopyTree("(nfpip==1 && nfpi0==0 && nfpim==0) && ((1.071<El && El<
 t2->Write();
 fout->Close();
 fin->Close();
+
+
+P.S: Please make sure to reference the core codes properly(i.e. run_gevgen and run_gntpc are at the locations listed in the wrapper texts: submit_gevgen and submit_gntpc). Any problem in creating account, slurm, swif2 can be contacted with help desk with ease.
 
 
 
