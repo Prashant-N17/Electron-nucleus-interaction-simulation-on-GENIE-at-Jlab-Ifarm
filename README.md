@@ -5,10 +5,15 @@ https://jlab.servicenowservices.com/sp?sys_kb_id=dec16b0ddb7f0410ee4a3889fc96194
 Once you install it, they give you a windows machine by default, so you can **email helpdesk@jlab.org and ask for CUE RHEL9 machine** to be added.
 
 **Open a terminal, and ssh scilogin.jlab.org**
+
 **Enter your pin+MFA**
+
 **Ssh ifarm**
+
 **Enter your password**
+
 **You can work on /work/hallc/e1206107**
+
 
 To setup GENIE in a personal computer might be a hectic and irritating task. 
 
