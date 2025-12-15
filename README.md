@@ -1,3 +1,5 @@
+VIEW in code format to avoid confusion.
+
 Please reference JLAB websites and help desk for **setting your account at ifarm at JLAB**. I use Group e1206107 under hallC for the task.
 I recommend **VDI access** for working on JLab computers:
 https://jlab.servicenowservices.com/sp?sys_kb_id=dec16b0ddb7f0410ee4a3889fc961944&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=beebdd561b8ae290a2c7db1de54bcb7f
